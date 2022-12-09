@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Garcia
+    given-names: Alberto
+    orcid: https://orcid.org/0000-0003-1723-3225
+  - family-names: Drischler
+    given-names: Christian
+    orcid: https://orcid.org/0000-0003-1534-6285
+  - family-names: Furnstahl
+    given-names: Richard
+    orcid: https://orcid.org/0000-0002-3483-333X
+  - family-names: Melendez
+    given-names: Jordan
+    orcid: https://orcid.org/0000-0003-1359-1594
+  - family-names: Zhang
+    given-names: Xilin
+    orcid: https://orcid.org/0000-0001-9278-5359
+title: "Wave function-based emulation for nucleon-nucleon scattering in momentum space"
+version: 0.1
+doi: 
+date-released: 
+url: 
