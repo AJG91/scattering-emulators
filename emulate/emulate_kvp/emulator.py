@@ -1748,16 +1748,15 @@ class KVP_emulator:
         U1 : array
             Parameter-dependent part of \Delta \tilde {U}_{ij} matrix.
         """
-        len_basis = self.len_basis
-        len_ps = self.len_ps
+        len_ps, len_basis = self.len_ps, self.len_basis
         
-        K00, K01 = K_b[:, :len_ps + 1, :len_ps + 1], K_b[:, :len_ps + 1, len_ps + 1:]
-        K10, K11 = K_b[:, len_ps + 1:, :len_ps + 1], K_b[:, len_ps + 1:, len_ps + 1:]
+        K00, K01 = K_b[:, :len_ps + 1, :len_ps + 1], swapaxes(K_b[:, :len_ps + 1, len_ps + 1:], 1, 2)
+        K10, K11 = swapaxes(K_b[:, len_ps + 1:, :len_ps + 1], 1, 2), K_b[:, len_ps + 1:, len_ps + 1:]
         
-        K_on_shell = stack((K00[:, -1, -1], K10[:, -1, -1], 
-                            K01[:, -1, -1], K11[:, -1, -1]))
-        K_half_on_shell = stack((K00[:, -1, :-1], K10[:, -1, :-1], 
-                                 K01[:, -1, :-1], K11[:, -1, :-1]))
+        K_on_shell = stack((K00[:, -1, -1], K01[:, -1, -1], 
+                            K10[:, -1, -1], K11[:, -1, -1]))
+        K_half_on_shell = stack((K00[:, -1, :-1], K01[:, -1, :-1], 
+                                 K10[:, -1, :-1], K11[:, -1, :-1]))
         
         wf_phi = self._wave_function_momentum(k0, ps, ws, Sp, K_on_shell, K_half_on_shell)
         V0_stack, V1_stack = self._partition_potential_coupled_channels(V_b, V0, V1)
