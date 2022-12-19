@@ -2016,35 +2016,17 @@ class KVP_emulator:
         factor = swapaxes(factor.reshape(len_k, 2 * len_basis, 2, order='F'), 1, 2)
         factor = stack((factor[:, 0, :len_basis], factor[:, 0, len_basis:], 
                         factor[:, 1, :len_basis], factor[:, 1, len_basis:]))
-        U0_renorm = zeros_like(U0, dtype=complex)
-        U1_renorm = zeros_like(U1, dtype=complex)
+        U0_rescaled = zeros_like(U0, dtype=complex)
+        U1_rescaled = zeros_like(U1, dtype=complex)
 
         for i in range(U0.shape[1]):
-            U0_renorm[:, i, 0] = einsum('ij, ijk, ik -> ijk', 
-                                        factor[i], U0[:, i, 0], factor[i], 
-                                        optimize=True)
-            U0_renorm[:, i, 1] = einsum('ij, ijk, ik -> ijk', 
-                                        factor[i], U0[:, i, 1], factor[i], 
-                                        optimize=True)
-            U0_renorm[:, i, 2] = einsum('ij, ijk, ik -> ijk', 
-                                        factor[i], U0[:, i, 2], factor[i], 
-                                        optimize=True)
-            U0_renorm[:, i, 3] = einsum('ij, ijk, ik -> ijk', 
-                                        factor[i], U0[:, i, 3], factor[i], 
-                                        optimize=True)
-
-            U1_renorm[:, i, 0] = einsum('ij, ijkm, ik -> ijkm', 
-                                        factor[i], U1[:, i, 0], factor[i], 
-                                        optimize=True)
-            U1_renorm[:, i, 1] = einsum('ij, ijkm, ik -> ijkm', 
-                                        factor[i], U1[:, i, 1], factor[i], 
-                                        optimize=True)
-            U1_renorm[:, i, 2] = einsum('ij, ijkm, ik -> ijkm', 
-                                        factor[i], U1[:, i, 2], factor[i], 
-                                        optimize=True)
-            U1_renorm[:, i, 3] = einsum('ij, ijkm, ik -> ijkm', 
-                                        factor[i], U1[:, i, 3], factor[i], 
-                                        optimize=True)        
-        return U0_renorm, U1_renorm
+            for j in range(U0.shape[1]):
+                U0_rescaled[:, i, j] = einsum('ij, ijk, ik -> ijk', 
+                                              factor[i], U0[:, i, j], factor[i], 
+                                              optimize=True)
+                U1_rescaled[:, i, j] = einsum('ij, ijkm, ik -> ijkm', 
+                                              factor[i], U1[:, i, j], factor[i], 
+                                              optimize=True)
+        return U0_rescaled, U1_rescaled
     
     
