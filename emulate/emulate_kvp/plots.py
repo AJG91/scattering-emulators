@@ -747,7 +747,7 @@ def plot_errors_spikes(
     ax[0].set_ylim(1e-15, 9e-1)
 
     props = dict(boxstyle='round', facecolor='white', alpha=0.5)
-    ax[0].text(0.06, 0.9, r'$1/K$ emu.', ha='left', va='top', 
+    ax[0].text(0.06, 0.9, r'$K^{-1}$ emu.', ha='left', va='top', 
                transform=ax[0].transAxes, bbox=props)
 
     ax[1].semilogy(E, err_results_fixed[0], color='red', ls='--', 
