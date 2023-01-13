@@ -1,7 +1,7 @@
-# Scattering Emulators In Momentum Space
+# Scattering Emulators
 
 This repository contains all code and data necessary to generate the results in
-*Wave function-based emulation for nucleon-nucleon scattering in momentum space* ([arXiv:][arXiv]).
+*Wave function-based emulation for nucleon-nucleon scattering in momentum space* ([arXiv:2301.05093][arXiv]).
 It extends the coordinate-space [Kohn variational principle (KVP) emulator][Furnstahl] to momentum-space (including coupled channels) with arbitrary boundary conditions, which enable the mitigation of spurious singularities known as [Kohn anomalies][Drischler].
 It also provides comparisons with the [Newton's variational principle (NVP) emulator][Melendez] for selected partial waves and NN observables using the semilocal momentum-space (SMS) regularized chiral potential at N4LO+.
 
@@ -74,26 +74,20 @@ phase_full_valid = scatt.predict(lecs, return_phase=True, full_space=True)  # No
 ## Citing this work
 
 Please cite this work as follows:
-> Garcia, Drischler, Furnstahl, Melendez, and Zhang, .
-
-The BibTeX entry reads:
 
 ```bibtex
-@article{Garcia:2022xyz,
+@article{Garcia:2023slj,
     author = "Garcia, A. J. and Drischler, C. and Furnstahl, R. J. and Melendez, J. A. and Zhang, Xilin",
     title = "{Wave function-based emulation for nucleon-nucleon scattering in momentum space}",
-    eprint = "",
+    eprint = "2301.05093",
     archivePrefix = "arXiv",
     primaryClass = "nucl-th",
-    doi = "",
-    journal = "",
-    volume = "",
-    pages = "",
-    year = ""
+    month = "1",
+    year = "2023"
 }
 ```
 
-[arxiv]: https://arxiv.org/
+[arxiv]: https://arxiv.org/abs/2301.05093
 [Furnstahl]: https://www.sciencedirect.com/science/article/pii/S0370269320305220
 [Drischler]: https://www.sciencedirect.com/science/article/pii/S0370269321007176
 [Melendez]: https://www.sciencedirect.com/science/article/pii/S0370269321005487
