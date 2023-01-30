@@ -46,40 +46,32 @@ def uncoupled_potential(
     spec = V_factor_RME * spectral[jmom]
     
     if (jmom == 0):
-#         if (wave == '1S0'):
         if '1S0' in wave:
             pot_cont, pot_spec = cont[0:3], spec[0]
-#         elif (wave == '3P0'):
         elif '3P0' in wave:
             pot_cont, pot_spec = cont[3:5], spec[5]
         else:
             raise Exception("Wrong partial wave!")
         
     elif (jmom == 1):
-#         if (wave == '1P1'):
         if '1P1' in wave:
             pot_cont, pot_spec = cont[0:2], spec[0]
-#         elif (wave == '3P1'):
         elif '3P1' in wave:
             pot_cont, pot_spec = cont[2:4], spec[1]
         else:
             raise Exception("Wrong partial wave!")
         
     elif (jmom == 2):
-#         if (wave == '1D2'):
         if '1D2' in wave:
             pot_cont, pot_spec = cont[0:1], spec[0]
-#         elif (wave == '3D2'):
         elif '3D2' in wave:
             pot_cont, pot_spec = cont[1:2], spec[1]
         else:
             raise Exception("Wrong partial wave!")
         
     elif (jmom == 3):
-#         if (wave == '1F3'):
         if '1F3' in wave:
             pot_cont, pot_spec = cont[0:1], spec[0]
-#         elif (wave == '3F3'):
         elif '3F3' in wave:
             pot_cont, pot_spec = cont[1:2], spec[1]
         else:
@@ -193,7 +185,7 @@ def coupled_potential(
 
 class GetFullPotential:
     """
-    A class used to compute the full potential (including half-on-shell and on-shell piece).
+    A class used to compute the full potential (including matrix elements on the energy mesh).
     
     Parameters
     ----------
@@ -227,7 +219,7 @@ class GetFullPotential:
         potential
     ) -> tuple[ArrayLike, ArrayLike]:
         """
-        Calculates the half-on-shell and on-shell pieces of the LEC-dependent
+        Calculates the matrix elements on the energy mesh for the LEC-dependent
         and LEC-independent potential terms.
 
         Parameters
@@ -269,8 +261,8 @@ class GetFullPotential:
         V1: ArrayLike
     ) -> tuple[ArrayLike, ArrayLike, ArrayLike]:
         """
-        Combines half-on-shell and on-shell pieces of the LEC-dependent
-        and LEC-independent potential terms to the pre-calculated off-shell part.
+        Adds matrix elements evaluated on the energy mesh for the LEC-dependent
+        and LEC-independent potential terms to the pre-calculated potential.
         Checks whether potential is coupled or uncoupled.
 
         Parameters
@@ -282,11 +274,11 @@ class GetFullPotential:
         lecs : array
             Low-energy couplings associated with the partial-wave.
         V : array
-            Full potential without half-on-shell and on-shell part.
+            Full potential without energy mesh matrix elements.
         V0 : array
-            LEC-independent part of potential without half-on-shell and on-shell part.
+            LEC-independent part of potential without energy mesh matrix elements.
         V1 : array
-            LEC-dependent part of potential without half-on-shell and on-shell part.
+            LEC-dependent part of potential without energy mesh matrix elements.
             
         Returns
         -------
@@ -315,9 +307,9 @@ class GetFullPotential:
         V1: ArrayLike
     ) -> tuple[ArrayLike, ArrayLike, ArrayLike]:
         """
-        Combines half-on-shell and on-shell pieces of the LEC-dependent
-        and LEC-independent potential terms to the pre-calculated off-shell part
-        for a non-coupled channel potential.
+        Adds matrix elements evaluated on the energy mesh for the LEC-dependent
+        and LEC-independent potential terms to the pre-calculated potential
+        for a non-coupled channel.
 
         Parameters
         ----------
@@ -328,11 +320,11 @@ class GetFullPotential:
         lecs : array
             Low-energy couplings associated with the partial-wave.
         V : array
-            Full potential without half-on-shell and on-shell part.
+            Full potential without energy mesh matrix elements.
         V0 : array
-            LEC-independent part of potential without half-on-shell and on-shell part.
+            LEC-independent part of potential without energy mesh matrix elements.
         V1 : array
-            LEC-dependent part of potential without half-on-shell and on-shell part.
+            LEC-dependent part of potential without energy mesh matrix elements.
             
         Returns
         -------
@@ -371,8 +363,8 @@ class GetFullPotential:
         V: ArrayLike
     ) -> ArrayLike:
         """
-        Combines half-on-shell and on-shell pieces of the LEC-independent potential 
-        terms to the pre-calculated off-shell part for a non-coupled channel potential.
+        Adds matrix elements evaluated on the energy mesh for the LEC-independent
+        potential terms to the pre-calculated potential for a non-coupled channel.
 
         Parameters
         ----------
@@ -381,7 +373,7 @@ class GetFullPotential:
         idx : int
             Specific index for indexing potential array.
         V : array
-            LEC-independent potential without half-on-shell and on-shell part.
+            LEC-independent potential without energy mesh matrix elements.
             
         Returns
         -------
@@ -406,8 +398,8 @@ class GetFullPotential:
         V: ArrayLike
     ) -> ArrayLike:
         """
-        Combines half-on-shell and on-shell pieces of the LEC-independent potential 
-        terms to the pre-calculated off-shell part for a non-coupled channel potential
+        Adds matrix elements evaluated on the energy mesh for the LEC-independent 
+        potential terms to the pre-calculated potential for a non-coupled channel
         using interpolation method from simulator.
 
         Parameters
@@ -428,12 +420,12 @@ class GetFullPotential:
         spl_order: int = 3
     ) -> ArrayLike:
         """
-        Interpolates half-on-shell and on-shell part of a non-coupled potential.
+        Interpolates to energy mesh for a non-coupled potential.
 
         Parameters
         ----------
         potential : array
-            Potential without half-on-shell and on-shell pieces.
+            Potential without energy mesh matrix elements.
             
         Returns
         -------
@@ -463,9 +455,9 @@ class GetFullPotential:
         V1: ArrayLike
     ) -> tuple[ArrayLike, ArrayLike, ArrayLike]:
         """
-        Combines half-on-shell and on-shell pieces of the LEC-dependent
-        and LEC-independent potential terms to the pre-calculated off-shell part
-        for a coupled channel potential.
+        Adds matrix elements evaluated on the energy mesh for the LEC-dependent
+        and LEC-independent potential terms to the pre-calculated potential
+        for a coupled channel.
 
         Parameters
         ----------
@@ -476,11 +468,11 @@ class GetFullPotential:
         lecs : array
             Low-energy couplings associated with the partial-wave.
         V : array
-            Full potential without half-on-shell and on-shell part.
+            Full potential without energy mesh matrix elements.
         V0 : array
-            LEC-independent part of potential without half-on-shell and on-shell part.
+            LEC-independent part of potential without energy mesh matrix elements.
         V1 : array
-            LEC-dependent part of potential without half-on-shell and on-shell part.
+            LEC-dependent part of potential without energy mesh matrix elements.
             
         Returns
         -------
@@ -509,15 +501,15 @@ class GetFullPotential:
             V_w_k0[i], V0_w_k0[i], V1_w_k0[i] = coupled_potential(jmom, lecs, 
                                                                   spec[i], cont[i], wave)
             
-            V_w_k0[i][:N, :N] = V[:N, :N] ## 3S1
-            V_w_k0[i][:N, N + 1:-1] = V[:N, N:] ## 3S1/3D1
-            V_w_k0[i][N + 1:-1, :N] = V[N:, :N] ## 3D1/3S1
-            V_w_k0[i][N + 1:-1, N + 1:-1] = V[N:, N:] ## 3D1
+            V_w_k0[i][:N, :N] = V[:N, :N] ## 00 term
+            V_w_k0[i][:N, N + 1:-1] = V[:N, N:] ## 01 term
+            V_w_k0[i][N + 1:-1, :N] = V[N:, :N] ## 10 term
+            V_w_k0[i][N + 1:-1, N + 1:-1] = V[N:, N:] ## 11 term
                         
-            V_w_k0[i][N:N + 1, :N + 1] = reshape(V_w_k0[i][:N + 1, N:N + 1], (N + 1)) ## 3S1
-            V_w_k0[i][N:N + 1, N + 1:] = reshape(V_w_k0[i][N + 1:, N:N + 1], (N + 1)) ## 3S1/3D1
-            V_w_k0[i][2 * N + 1:2 * N + 2, :N + 1] = V_w_k0[i][:N + 1, -1] ## 3D1/3S1
-            V_w_k0[i][2 * N + 1:2 * N + 2, N + 1:] = V_w_k0[i][N + 1:, -1] ## 3D1
+            V_w_k0[i][N:N + 1, :N + 1] = reshape(V_w_k0[i][:N + 1, N:N + 1], (N + 1)) ## 00 term
+            V_w_k0[i][N:N + 1, N + 1:] = reshape(V_w_k0[i][N + 1:, N:N + 1], (N + 1)) ## 01 term
+            V_w_k0[i][2 * N + 1:2 * N + 2, :N + 1] = V_w_k0[i][:N + 1, -1] ## 10 term
+            V_w_k0[i][2 * N + 1:2 * N + 2, N + 1:] = V_w_k0[i][N + 1:, -1] ## 11 term
             
             V0_w_k0[i][:N, :N] = V0[:N, :N]
             V0_w_k0[i][:N, N + 1:-1] = V0[:N, N:]

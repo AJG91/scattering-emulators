@@ -896,7 +896,7 @@ class SMSChiralPotential:
     ) -> ArrayLike:
         """
         Calculates the C functions present in the spectral integrals at NLO and N2LO.
-        These functions are determined by the required shoort-distance behavior of the
+        These functions are determined by the required short-distance behavior of the
         coordinate space potential.
 
         Parameters
@@ -950,7 +950,7 @@ class SMSChiralPotential:
     ) -> ArrayLike:
         """
         Calculates the C functions present in the spectral integrals at N3LO and N4LO.
-        These functions are determined by the required shoort-distance behavior of the
+        These functions are determined by the required short-distance behavior of the
         coordinate space potential.
 
         Parameters
