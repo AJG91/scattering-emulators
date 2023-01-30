@@ -1,5 +1,5 @@
 """
-File used for calculating half-on-shell and on-shell pieces of the potential
+File used for calculating potential on the energy mesh
 using either interpolation or exact calculation.
 """
 from numpy import (
