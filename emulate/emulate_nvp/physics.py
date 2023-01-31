@@ -14,10 +14,10 @@ from .utils import (
     ScatteringSystem,
 )
 
-def fix_tau_output(len_k, tau):
-    tau_new = tau.swapaxes(0, 1).reshape(2, 2 * len_k, order='F')
-    tau_new = np.reshape(tau_new, (4, len_k)).T
-    return -tau_new
+def fix_output(len_k, K):
+    K_new = K.swapaxes(0, 1).reshape(2, 2 * len_k, order='F')
+    K_new = np.reshape(K_new, (4, len_k)).T
+    return -K_new
 
 def fix_coupled_lecs(
     lecs: ArrayLike,
@@ -507,7 +507,7 @@ class TwoBodyScattering:
             )
                         
         if self.is_coupled:
-            K = fix_tau_output(K.shape[0], K)
+            K = fix_output(K.shape[0], K)
         else:
             K = -K
 
