@@ -16,11 +16,11 @@ from numpy.typing import ArrayLike
 from typing import Optional
 from scipy.interpolate import RectBivariateSpline
 
-from emulate.emulate_kvp.constants import (
+from emulate_kvp.constants import (
     mass_proton, mass_neutron, fm_to_sqrt_mb
 )
-from emulate.emulate_kvp.kinematics import e_lab_to_k_cm
-from emulate.emulate_kvp.utils import glockle_cubic_spline, fix_phases_continuity
+from emulate_kvp.kinematics import e_lab_to_k_cm
+from emulate_kvp.utils import glockle_cubic_spline, fix_phases_continuity
 
 
 class TwoBodyScattering:

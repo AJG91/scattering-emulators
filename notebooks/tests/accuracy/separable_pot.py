@@ -2,7 +2,7 @@
 import numpy as np
 from numpy.typing import ArrayLike
 import scipy.special as ss 
-from emulate.emulate_kvp.constants import Mn_MeV as M_N, hbar_c
+from emulate_kvp.constants import Mn_MeV as M_N, hbar_c
 
 
 class SeparablePotential():
