@@ -79,11 +79,15 @@ Please cite this work as follows:
 ```bibtex
 @article{Garcia:2023slj,
     author = "Garcia, A. J. and Drischler, C. and Furnstahl, R. J. and Melendez, J. A. and Zhang, Xilin",
-    title = "{Wave function-based emulation for nucleon-nucleon scattering in momentum space}",
+    title = "{Wave-function-based emulation for nucleon-nucleon scattering in momentum space}",
     eprint = "2301.05093",
     archivePrefix = "arXiv",
     primaryClass = "nucl-th",
-    month = "1",
+    doi = "10.1103/PhysRevC.107.054001",
+    journal = "Phys. Rev. C",
+    volume = "107",
+    number = "5",
+    pages = "054001",
     year = "2023"
 }
 ```
