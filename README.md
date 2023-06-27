@@ -5,7 +5,8 @@ This repository contains all code and data necessary to generate the results in
 It extends the coordinate-space [Kohn variational principle (KVP) emulator][Furnstahl] to momentum-space (including coupled channels) with arbitrary boundary conditions, which enable the mitigation of spurious singularities known as [Kohn anomalies][Drischler].
 It also provides comparisons with the [Newton's variational principle (NVP) emulator][Melendez] for selected partial waves and NN observables using the semilocal momentum-space (SMS) regularized chiral potential at N4LO+.
 
-For potential data files see the following link: https://www.dropbox.com/sh/436kq5y0zkxacmh/AADlR_g6mi0qa1rPCNeN27qHa?dl=0
+For potential data files see the following link: 
+https://zenodo.org/record/8066491
 
 ## Getting Started
 
